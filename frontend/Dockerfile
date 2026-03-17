@@ -1,13 +1,13 @@
-FROM node:20-alpine
+
+FROM node:20
+
 WORKDIR /app
 
-# Copy package.json first
 COPY package*.json ./
+RUN npm install
 
-# Install dependencies
-RUN npm ci
-
-# Copy app source
 COPY . .
 
-CMD ["npm", "run", "dev"]
+EXPOSE 3000
+
+CMD ["npm", "start"]
