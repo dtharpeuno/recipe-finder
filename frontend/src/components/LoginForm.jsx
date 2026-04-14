@@ -12,9 +12,10 @@ const LoginForm = () => {
     const [email, setEmail] = useState(null);
     const [success, setSuccess] = useState(false);
     const [disableButton, updateDisableButton] = useState(true)
+    const [userFound, updateUserFound] = useState(false)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const nameRegEx = /^[A-Za-z]+$/
-    const {user, saveUser, clearUser } = useUserStorage()
+    const { user, saveUser, clearUser } = useUserStorage()
     console.log('user =>' + JSON.stringify(user))
 
     const handleSubmit = (event) => {
@@ -22,19 +23,29 @@ const LoginForm = () => {
         saveUser(name, email);
         setSuccess(true);
     };
+
+    const handleRedirect = (event) => {
+        event.preventDefault();
+    }
+
+    const handleReset = (event) => {
+        event.preventDefault();
+        clearUser()
+        updateUserFound(false)
+    }
     
     useEffect(() => {
         if (email && emailRegex.test(email) && name && nameRegEx.test(name)) {
             updateDisableButton(false)
         }
     }, [email, emailRegex, name]);
-    
+
     useEffect(() => {
-        if(user !== null) {
-            console.log('Hello')
+        if (user !== null) {
+            updateUserFound(true)
         }
     }, []);
-    
+
 
     useEffect(() => {
         if (user !== null && success) {
@@ -89,9 +100,9 @@ const LoginForm = () => {
 
     const successArea = (
         <Box paddingY={2}
-        minHeight={50}
-         textAlign='center'>
-                <Typography
+            minHeight={50}
+            textAlign='center'>
+            <Typography
                 variant='p'
                 color='success'
                 fontSize={theme.typography.body4}
@@ -102,6 +113,75 @@ const LoginForm = () => {
         </Box>
     )
 
+    const userFoundArea = user && (
+        <Box
+            sx={{
+                textAlign: 'center',
+                p: 1,
+                border: '1px solid #ddd',
+                borderRadius: 2,
+                mb: 2
+            }}
+        >
+            <Typography
+                variant="body1"
+                color="success"
+                paddingX={2}
+                marginBottom={2}
+            >
+                Welcome Back!
+            </Typography>
+            <Box display="flex" flexDirection="column">
+                <Typography
+                    variant="body3"
+                    color={theme.palette.primary.main}
+                >
+                    We found your saved info for:
+                </Typography>
+                <Typography
+                    variant="body3"
+                    color={theme.palette.primary.main}
+                >
+                    <strong>{user.name}</strong> / <strong>{user.email}</strong>
+                </Typography>
+            </Box>
+
+            <Box
+                display="flex"
+                justifyContent="center"
+                flexDirection="column"
+                gap={1}
+                paddingY={1}>
+                <Typography
+                    variant="body3"
+                    color={theme.palette.primary.main}
+                    marginY={1}
+                    paddingX={2}
+                    sx={{
+                        textDecoration: 'underline',
+                        cursor: 'pointer'
+                    }}
+                    onClick={handleRedirect}
+                >
+                    Continue to recipes!
+                </Typography>
+                <Typography
+                    variant="body3"
+                    color={theme.palette.primary.main}
+                    marginY={1}
+                    paddingX={2}
+                    sx={{
+                        textDecoration: 'underline',
+                        cursor: 'pointer'
+                    }}
+                    onClick={handleReset}
+                >
+                    Start Over
+                </Typography>
+            </Box>
+        </Box>
+    )
+
     return (
         <>
             <Box
@@ -109,8 +189,9 @@ const LoginForm = () => {
                 onSubmit={handleSubmit}
                 position='relative'
             >
-                {!success && formArea}
-                {success && successArea}
+                {!success && user == null && formArea}
+                {success && user !== null && successArea}
+                {userFound  && userFoundArea}
             </Box>
         </>
     );

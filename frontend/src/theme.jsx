@@ -26,18 +26,18 @@ const theme = createTheme({
             fontSize: '2.5rem',
             fontFamily: "'Sacramento', cursive"
         },
-        // h2: {
-        //     fontFamily: "'Montserrat', sans-serif",
-        // },
-        // h3: {
-        //     fontSize: '1.3rem',
-        //     fontFamily: "'Montserrat', sans-serif",
-        // },
-        // h4: {
-        //     fontSize: '1.1rem',
-        //     lineHeight: '1.1rem',
-        //     fontFamily: "'Montserrat', sans-serif",
-        // },
+        h2: {
+            fontFamily: "'Inter', sans-serif",
+        },
+        h3: {
+            fontSize: '1.3rem',
+            fontFamily: "'Inter', sans-serif",
+        },
+        h4: {
+            fontSize: '1.1rem',
+            lineHeight: '1.1rem',
+            fontFamily: "'Inter', sans-serif",
+        },
         body1: {
             fontSize: '1rem',
             fontFamily: "'Inter', sans-serif",
