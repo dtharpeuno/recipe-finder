@@ -1,11 +1,10 @@
 import { use, useEffect, useState } from 'react';
 import { TextField, Button, Box, Typography, Link } from '@mui/material';
 import theme from "../theme";
-import config from "../config";
 import {
     useUserStorage
 } from "../hooks/main";
-
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
     const [name, setName] = useState(null);
@@ -16,6 +15,8 @@ const LoginForm = () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const nameRegEx = /^[A-Za-z]+$/
     const { user, saveUser, clearUser } = useUserStorage()
+    const navigate = useNavigate()
+
     console.log('user =>' + JSON.stringify(user))
 
     const handleSubmit = (event) => {
@@ -26,6 +27,7 @@ const LoginForm = () => {
 
     const handleRedirect = (event) => {
         event.preventDefault();
+        navigate('/recipes');
     }
 
     const handleReset = (event) => {
@@ -50,7 +52,7 @@ const LoginForm = () => {
     useEffect(() => {
         if (user !== null && success) {
             const timer = setTimeout(() => {
-                window.location.reload()
+                 navigate('/recipes');
             }, 3000);
             return () => clearTimeout(timer);
         }
