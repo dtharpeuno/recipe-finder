@@ -2,6 +2,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter as Router, Routes, Route } from 'react-router';
 import LoginPage from './views/LoginPage';
 import RecipeSearch from './views/RecipeSearch';
+import RecipeDisplay from './views/RecipeDisplay';
 import theme from './theme';
 import './styles/body.css';
 
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage />} />
           <Route path="/recipes" element={<RecipeSearch />} />
+          <Route path="/recipes/v/:idMeal" element={<RecipeDisplay />} />
         </Routes>
       </Router>
     </ThemeProvider>

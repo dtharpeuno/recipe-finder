@@ -10,7 +10,7 @@ const theme = createTheme({
             main: '#ba431b'
         },
         success: {
-            main: '#66B266'
+            main: '#457645'
         },
         error: {
             main: 'rgba(199, 64, 64, 0.90)'

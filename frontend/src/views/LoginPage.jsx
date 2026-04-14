@@ -4,7 +4,7 @@ import theme from "../theme";
 import login_bg from "../assets/login_bg.jpg"
 import LoginForm from "../components/LoginForm";
 
-const LoginPage = ({ isAdmin }) => {
+const LoginPage = () => {
     const formArea = (
         <Box
             display="flex"
