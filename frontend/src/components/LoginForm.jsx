@@ -1,4 +1,4 @@
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TextField, Button, Box, Typography, Link } from '@mui/material';
 import theme from "../theme";
 import {
@@ -7,7 +7,8 @@ import {
 import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-    const [name, setName] = useState(null);
+    const [firstName, setFirstName] = useState(null);
+    const [lastName, setLastName] = useState(null)
     const [email, setEmail] = useState(null);
     const [success, setSuccess] = useState(false);
     const [disableButton, updateDisableButton] = useState(true)
@@ -21,7 +22,7 @@ const LoginForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        saveUser(name, email);
+        saveUser(firstName, lastName,  email);
         setSuccess(true);
     };
 
@@ -35,12 +36,6 @@ const LoginForm = () => {
         clearUser()
         updateUserFound(false)
     }
-    
-    useEffect(() => {
-        if (email && emailRegex.test(email) && name && nameRegEx.test(name)) {
-            updateDisableButton(false)
-        }
-    }, [email, emailRegex, name]);
 
     useEffect(() => {
         if (user !== null) {
@@ -50,9 +45,15 @@ const LoginForm = () => {
 
 
     useEffect(() => {
+        if (email && emailRegex.test(email) && firstName && nameRegEx.test(firstName) && lastName && nameRegEx.test(lastName)) {
+            updateDisableButton(false)
+        }
+    }, [email, emailRegex, name]);
+
+    useEffect(() => {
         if (user !== null && success) {
             const timer = setTimeout(() => {
-                 navigate('/recipes');
+                navigate('/recipes');
             }, 3000);
             return () => clearTimeout(timer);
         }
@@ -64,10 +65,22 @@ const LoginForm = () => {
                 label="First Name"
                 type="name"
                 variant="outlined"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
                 fullWidth
-                helperText={!nameRegEx.test(name) ? 'Please enter your first name' : ''}
+                helperText={!nameRegEx.test(firstName) ? 'Please enter your first name' : ''}
+                sx={{
+                    marginBottom: 2
+                }}
+            />
+              <TextField
+                label="Last Name"
+                type="name"
+                variant="outlined"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                fullWidth
+                helperText={!nameRegEx.test(lastName) ? 'Please enter your last name' : ''}
                 sx={{
                     marginBottom: 2
                 }}
@@ -144,7 +157,7 @@ const LoginForm = () => {
                     variant="body3"
                     color={theme.palette.primary.main}
                 >
-                    <strong>{user.name}</strong> / <strong>{user.email}</strong>
+                    <strong>{user.firstName} {user.lastName}</strong> / <strong>{user.email}</strong>
                 </Typography>
             </Box>
 
@@ -193,7 +206,7 @@ const LoginForm = () => {
             >
                 {!success && user == null && formArea}
                 {success && user !== null && successArea}
-                {userFound  && userFoundArea}
+                {userFound && userFoundArea}
             </Box>
         </>
     );

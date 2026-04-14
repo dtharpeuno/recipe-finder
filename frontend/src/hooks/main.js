@@ -6,7 +6,7 @@ export const useUserStorage = () => {
     return stored ? JSON.parse(stored) : null;
   });
 
-  const saveUser = (name, email) => {
+  const saveUser = (firstName, lastName, email) => {
     const newUser = { name, email };
     setUser(newUser);
     localStorage.setItem('user', JSON.stringify(newUser));
