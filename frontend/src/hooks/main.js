@@ -1,0 +1,21 @@
+import { useState, useEffect } from 'react';
+
+export const useUserStorage = () => {
+  const [user, setUser] = useState(() => {
+    const stored = localStorage.getItem('user');
+    return stored ? JSON.parse(stored) : null;
+  });
+
+  const saveUser = (name, email) => {
+    const newUser = { name, email };
+    setUser(newUser);
+    localStorage.setItem('user', JSON.stringify(newUser));
+  };
+
+  const clearUser = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+  };
+
+  return { user, saveUser, clearUser };
+};
