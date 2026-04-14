@@ -70,4 +70,4 @@ const RecipeSearchBar = () =>  {
   );
 }
 
-export default Re
+export default RecipeSearchBar

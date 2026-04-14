@@ -8,6 +8,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import RandomRecipe from '../components/RandomRecipe'
 import RecipeSearchBar from '../components/RecipeSearchBar';
+import UserHeader from '../components/UserHeader';
 
 const RecipeSearch = () => {
   const { user } = useUserStorage()
@@ -19,21 +20,9 @@ const RecipeSearch = () => {
     }
   }, []);
 
-  const userData = (
-    <Typography
-      variant='body3'
-      color='success'
-      marginTop={1}
-      paddingX={2}
-      marginBottom={2}
-    >
-     Welcome,  {user.firstName} {user.lastName} / {user.emailAddress}
-    </Typography>
-  )
-
   return (
     <PageLayout title="Recipe Search">
-      {userData}
+      <UserHeader />
       <RandomRecipe />
       <RecipeSearchBar />
     </PageLayout>
