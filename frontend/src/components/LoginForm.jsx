@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
     const [firstName, setFirstName] = useState(null);
     const [lastName, setLastName] = useState(null)
-    const [email, setEmail] = useState(null);
+    const [emailAddress, setEmailAddress] = useState(null);
     const [success, setSuccess] = useState(false);
     const [disableButton, updateDisableButton] = useState(true)
     const [userFound, updateUserFound] = useState(false)
@@ -22,7 +22,7 @@ const LoginForm = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        saveUser(firstName, lastName,  email);
+        saveUser(firstName, lastName,  emailAddress);
         setSuccess(true);
     };
 
@@ -45,10 +45,10 @@ const LoginForm = () => {
 
 
     useEffect(() => {
-        if (email && emailRegex.test(email) && firstName && nameRegEx.test(firstName) && lastName && nameRegEx.test(lastName)) {
+        if (emailAddress && emailRegex.test(emailAddress) && firstName && nameRegEx.test(firstName) && lastName && nameRegEx.test(lastName)) {
             updateDisableButton(false)
         }
-    }, [email, emailRegex, name]);
+    }, [emailAddress, emailRegex, firstName, lastName]);
 
     useEffect(() => {
         if (user !== null && success) {
@@ -89,10 +89,10 @@ const LoginForm = () => {
                 label="Email Address"
                 type="email"
                 variant="outlined"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={emailAddress}
+                onChange={(e) => setEmailAddress(e.target.value)}
                 fullWidth
-                helperText={!emailRegex.test(email) && email !== null ? 'Please enter a valid email address' : ''}
+                helperText={!emailRegex.test(emailAddress) && emailAddress !== null ? 'Please enter a valid email address' : ''}
             />
             <Button
                 type="submit"
@@ -157,7 +157,7 @@ const LoginForm = () => {
                     variant="body3"
                     color={theme.palette.primary.main}
                 >
-                    <strong>{user.firstName} {user.lastName}</strong> / <strong>{user.email}</strong>
+                    <strong>{user.firstName} {user.lastName}</strong> / <strong>{user.emailAddress}</strong>
                 </Typography>
             </Box>
 
