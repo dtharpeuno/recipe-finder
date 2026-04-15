@@ -21,7 +21,7 @@ const RecipeDisplayResults = ({ results }) => {
                     key={meal.idMeal}
                     title={meal.strMeal}
                     image={meal.strMealThumb}
-                    link={`/recipe/${meal.idMeal}`}
+                    link={`/recipes/v/${meal.idMeal}`}
                 />
             ))}
         </Box>

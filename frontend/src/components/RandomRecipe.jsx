@@ -1,4 +1,4 @@
-import { Box, Typography, Chip } from "@mui/material";
+import { Box, Typography, Chip, Link } from "@mui/material";
 import theme from "../theme";
 import {
     getRandomRecipe
@@ -14,7 +14,7 @@ const RandomRecipe = () => {
         randomRecipe?.meals?.[0]?.strIngredient4,
         randomRecipe?.meals?.[0]?.strIngredient5,
     ]
-    // console.log(randomRecipe)
+
     return (
         <>
             <Box display='flex'
@@ -93,6 +93,18 @@ const RandomRecipe = () => {
                         >
                             {randomRecipe?.meals?.[0]?.strInstructions}
                         </Typography>
+
+                        <Link
+                            href={`/recipes/v/${randomRecipe?.meals?.[0]?.idMeal}`}
+                            underline="none"
+                            color="success"
+                            variant="body3"
+                            sx={{
+                                mt: "auto"
+                            }}
+                        >
+                            Go to Recipe →
+                        </Link>
                     </Box>
                 </Box>
             </Box>

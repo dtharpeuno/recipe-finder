@@ -18,8 +18,6 @@ const LoginForm = () => {
     const { user, saveUser, clearUser } = useUserStorage()
     const navigate = useNavigate()
 
-    console.log('user =>' + JSON.stringify(user))
-
     const handleSubmit = (event) => {
         event.preventDefault();
         saveUser(firstName, lastName,  emailAddress);
