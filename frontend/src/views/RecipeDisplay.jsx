@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
-import { Box, Typography, Link } from "@mui/material";
-import theme from "../theme";
+import { useEffect } from 'react';
 import PageLayout from '../components/PageLayout';
 import {
     useUserStorage
@@ -8,6 +6,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import UserHeader from '../components/UserHeader';
 import BreadCrumb from '../components/BreadCrumb';
+import RecipeOutput from '../components/RecipeShowcase';
 
 const RecipeDisplay = () => {
   const { user } = useUserStorage()
@@ -24,6 +23,7 @@ const RecipeDisplay = () => {
     <PageLayout title="Recipe Display">
       <UserHeader />
       <BreadCrumb title="Recipe Search" link="/recipes/"/>
+      <RecipeOutput idMeal={idMeal} />
     </PageLayout>
   )
 };

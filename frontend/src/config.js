@@ -11,7 +11,8 @@ const config = {
         searchName: `${CORSProxy}${baseRecipeApi}search.php?s=`,
         filterIngredient: `${CORSProxy}${baseRecipeApi}filter.php?i=`,
         filterCategory: `${CORSProxy}${baseRecipeApi}filter.php?c=`,
-        filterArea: `${CORSProxy}${baseRecipeApi}filter.php?a=`
+        filterArea: `${CORSProxy}${baseRecipeApi}filter.php?a=`,
+        recipeByIdMeal: `${CORSProxy}${baseRecipeApi}lookup.php?i=`
     }
 };
 

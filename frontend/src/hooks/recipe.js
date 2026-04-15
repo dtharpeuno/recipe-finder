@@ -307,3 +307,41 @@ export const getRecipeByIngredient = ({recipeIngredient}) => {
 
     return { data,  loading, error };
 }; 
+
+export const getRecipeByIdMeal = ({idMeal}) => {
+    const [data, updateData] = useState(null);
+    const [loading, updateLoading] = useState(false)
+    const [error, updateError] = useState(false)
+    const route = config.api.recipeByIdMeal
+
+    useEffect(() => {
+        if (!data && idMeal) {
+            updateLoading(true)
+            fetch(`${route}${idMeal}`, {
+                method: "GET",
+                headers: {
+                    "Cache-Control": "no-cache",
+                    "Pragma": "no-cache",
+                },
+            }).then(async (response) => {
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    const timer = setTimeout(() => {
+                        updateLoading(false)
+                        updateError(errorData)
+                    }, 3000);
+                    return () => clearTimeout(timer);
+                }
+                return response.json();
+            }).then((data) => {
+                if (data) {
+                    updateData(data)
+                }
+            }).catch((error) => {
+                console.log(error.message)
+            });
+        }
+    }, [idMeal]);
+
+    return { data,  loading, error };
+}; 
