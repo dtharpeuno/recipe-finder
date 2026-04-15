@@ -14,7 +14,7 @@ const RandomRecipe = () => {
         randomRecipe?.meals?.[0]?.strIngredient4,
         randomRecipe?.meals?.[0]?.strIngredient5,
     ]
-    console.log(randomRecipe)
+    // console.log(randomRecipe)
     return (
         <>
             <Box display='flex'
