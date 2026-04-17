@@ -20,15 +20,14 @@ const Header = () => {
                 <Typography
                     variant="h1"
                     color="#fff"
-                    marginY={1}
+                    paddingY={1}
                 >
-                    Recipe Finder |
+                    Recipe Finder
                 </Typography>
                 <Typography
-                    variant="h4"
+                    variant="body3"
                     color="#fff"
                     marginLeft={2}
-                    marginTop={-1}
                 >
                     Your kitchen companion!
                 </Typography>

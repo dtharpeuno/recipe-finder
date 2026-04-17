@@ -250,16 +250,14 @@ export const getRecipeByArea = ({recipeArea}) => {
             }).then(async (response) => {
                 if (!response.ok) {
                     const errorData = await response.json();
-                    const timer = setTimeout(() => {
-                        updateLoading(false)
-                        updateError(errorData)
-                    }, 3000);
-                    return () => clearTimeout(timer);
+                    updateLoading(false)
+                    updateError(errorData)
                 }
                 return response.json();
             }).then((data) => {
                 if (data) {
                     updateData(data)
+                    updateLoading(false)
                 }
             }).catch((error) => {
                 console.log(error.message)
@@ -288,16 +286,14 @@ export const getRecipeByIngredient = ({recipeIngredient}) => {
             }).then(async (response) => {
                 if (!response.ok) {
                     const errorData = await response.json();
-                    const timer = setTimeout(() => {
-                        updateLoading(false)
-                        updateError(errorData)
-                    }, 3000);
-                    return () => clearTimeout(timer);
+                    updateLoading(false)
+                    updateError(errorData)
                 }
                 return response.json();
             }).then((data) => {
                 if (data) {
                     updateData(data)
+                    updateLoading(false)
                 }
             }).catch((error) => {
                 console.log(error.message)
@@ -326,16 +322,14 @@ export const getRecipeByIdMeal = ({idMeal}) => {
             }).then(async (response) => {
                 if (!response.ok) {
                     const errorData = await response.json();
-                    const timer = setTimeout(() => {
-                        updateLoading(false)
-                        updateError(errorData)
-                    }, 3000);
-                    return () => clearTimeout(timer);
+                    updateLoading(false)
+                    updateError(errorData)
                 }
                 return response.json();
             }).then((data) => {
                 if (data) {
                     updateData(data)
+                    updateLoading(false)
                 }
             }).catch((error) => {
                 console.log(error.message)

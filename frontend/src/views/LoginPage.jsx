@@ -11,7 +11,7 @@ const LoginPage = () => {
             flexDirection="column"
         >
             <Typography
-                variant="body1"
+                variant="body2"
                 color="success"
                 paddingX={2}
             >

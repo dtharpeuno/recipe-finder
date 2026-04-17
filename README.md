@@ -8,6 +8,8 @@ A React + TypeScript + Vite frontend for a Recipe Finder app. The repository cur
 - TypeScript
 - Vite
 - Material UI (MUI)
+- Vitest (test runner)
+- React Testing Library
 - Docker / Docker Compose
 
 ## Project Structure
@@ -43,6 +45,13 @@ git clone https://github.com/dtharpeuno/recipe-finder.git
 cd recipe-finder
 ```
 
+Or from downloaded zip file:
+
+- Extract zip file to directory
+```bash
+cd directory/recipe-finder
+```
+
 ## Run with Docker Compose
 
 From the repository root:
@@ -62,6 +71,44 @@ http://localhost:3000
 ```bash
 docker compose down
 ```
+
+### Running Unit Tests in Docker Container
+
+1. With Docker container running run Docker ps cmd
+```bash
+docker ps 
+```
+
+2. Copy the CONTAINER ID of the container running the `frontend`
+
+3. Run the docker exec cmd for running npm unit test
+```bash
+docker exec -t <CONTAINER ID> npm run test
+```
+
+ex:
+```bash
+docker exec -t 6b6537af12ba npm run test
+```
+
+4. Test runner will run all tests, then output to terminal
+
+ex:
+```bash
+> frontend@0.0.0 test
+> vitest run
+
+ RUN  v4.1.4 /app
+
+ ✓ src/hooks/main.test.js (4 tests) 16ms
+ ✓ src/hooks/recipe.test.js (6 tests) 356ms
+
+ Test Files  2 passed (2)
+      Tests  10 passed (10)
+   Start at  16:26:15
+   Duration  1.03s (transform 111ms, setup 28ms, import 236ms, tests 372ms, environment 870ms)
+```
+
 
 ## How the Docker Setup Works
 
