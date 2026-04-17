@@ -19,16 +19,14 @@ export const getRandomRecipe = () => {
             }).then(async (response) => {
                 if (!response.ok) {
                     const errorData = await response.json();
-                    const timer = setTimeout(() => {
-                        updateLoadingRandomRecipe(false)
-                        updateErrorRandomRecipe(errorData)
-                    }, 3000);
-                    return () => clearTimeout(timer);
+                    updateLoadingRandomRecipe(false)
+                    updateErrorRandomRecipe(errorData)
                 }
                 return response.json();
             }).then((data) => {
                 if (data) {
                     updateRandomRecipe(data)
+                    updateLoadingRandomRecipe(false)
                 }
             }).catch((error) => {
                 console.log(error.message)
@@ -58,16 +56,14 @@ export const getAllCategories = () => {
             }).then(async (response) => {
                 if (!response.ok) {
                     const errorData = await response.json();
-                    const timer = setTimeout(() => {
-                        updateLoadingCategories(false)
-                        updateErrorCategories(errorData)
-                    }, 3000);
-                    return () => clearTimeout(timer);
+                    updateLoadingCategories(false)
+                    updateErrorCategories(errorData)
                 }
                 return response.json();
             }).then((data) => {
                 if (data) {
                     updateCategories(data)
+                    updateLoadingCategories(false)
                 }
             }).catch((error) => {
                 console.log(error.message)
@@ -97,16 +93,14 @@ export const getAllAreas = () => {
             }).then(async (response) => {
                 if (!response.ok) {
                     const errorData = await response.json();
-                    const timer = setTimeout(() => {
-                        updateLoadingAreas(false)
-                        updateErrorAreas(errorData)
-                    }, 3000);
-                    return () => clearTimeout(timer);
+                    updateLoadingAreas(false)
+                    updateErrorAreas(errorData)
                 }
                 return response.json();
             }).then((data) => {
                 if (data) {
                     updateAreas(data)
+                    updateLoadingAreas(false)
                 }
             }).catch((error) => {
                 console.log(error.message)
@@ -135,16 +129,14 @@ export const getAllIngredients = () => {
             }).then(async (response) => {
                 if (!response.ok) {
                     const errorData = await response.json();
-                    const timer = setTimeout(() => {
-                        updateLoadingIngredients(false)
-                        updateErrorIngredients(errorData)
-                    }, 3000);
-                    return () => clearTimeout(timer);
+                    updateLoadingIngredients(false)
+                    updateErrorIngredients(errorData)
                 }
                 return response.json();
             }).then((data) => {
                 if (data) {
                     updateIngredients(data)
+                    updateLoadingIngredients(false)
                 }
             }).catch((error) => {
                 console.log(error.message)
@@ -174,16 +166,14 @@ export const getRecipeByName = ({recipeName}) => {
             }).then(async (response) => {
                 if (!response.ok) {
                     const errorData = await response.json();
-                    const timer = setTimeout(() => {
-                        updateLoading(false)
-                        updateError(errorData)
-                    }, 3000);
-                    return () => clearTimeout(timer);
+                    updateLoading(false)
+                    updateError(errorData)
                 }
                 return response.json();
             }).then((data) => {
                 if (data) {
                     updateData(data)
+                    updateLoading(false)
                 }
             }).catch((error) => {
                 console.log(error.message)
@@ -212,16 +202,14 @@ export const getRecipeByCategory = ({recipeCategory}) => {
             }).then(async (response) => {
                 if (!response.ok) {
                     const errorData = await response.json();
-                    const timer = setTimeout(() => {
-                        updateLoading(false)
-                        updateError(errorData)
-                    }, 3000);
-                    return () => clearTimeout(timer);
+                    updateLoading(false)
+                    updateError(errorData)
                 }
                 return response.json();
             }).then((data) => {
                 if (data) {
                     updateData(data)
+                    updateLoading(false)
                 }
             }).catch((error) => {
                 console.log(error.message)
