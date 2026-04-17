@@ -47,7 +47,7 @@ cd recipe-finder
 
 Or from downloaded zip file:
 
-- Extract zip file to directory
+Extract zip file to directory
 ```bash
 cd directory/recipe-finder
 ```
@@ -74,14 +74,14 @@ docker compose down
 
 ### Running Unit Tests in Docker Container
 
-1. With Docker container running run Docker ps cmd
+With Docker container running, run Docker ps cmd
 ```bash
 docker ps 
 ```
 
-2. Copy the CONTAINER ID of the container running the `frontend`
+Copy the CONTAINER ID of the container running the `frontend`
 
-3. Run the docker exec cmd for running npm unit test
+Run the docker exec cmd for running npm unit test
 ```bash
 docker exec -t <CONTAINER ID> npm run test
 ```
@@ -91,7 +91,7 @@ ex:
 docker exec -t 6b6537af12ba npm run test
 ```
 
-4. Test runner will run all tests, then output to terminal
+Test runner will run all tests, then output to terminal
 
 ex:
 ```bash
