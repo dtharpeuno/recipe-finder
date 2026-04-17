@@ -23,7 +23,7 @@ const theme = createTheme({
         fontFamily: "'Inter', sans-serif",
         h1: {
             fontWeight: 700,
-            fontSize: '2.5rem',
+            fontSize: '2rem',
             fontFamily: "'Sacramento', cursive"
         },
         h2: {
